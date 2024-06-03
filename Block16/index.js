@@ -9,7 +9,7 @@ const items = [
   { id: 8, name: "sourdough loaf", price: 5.5, categoryId: 4, inventory: 100 },
 ];
 
-const cart = [];
+const cart = [1, 3, 5];
 
 // ------------------ Complete the functions written below ------------------------------ //
 
@@ -25,9 +25,7 @@ function logItemNames(name) {
  */
 function findItemById(id) {
   // TODO: Use the .find() method to return the item who's id matches the passed in id
-  const foundItem = items.find(id => id.name === id);
-  return id === "1"
-  console.log(foundItem)
+  return items.find(element => element.id === id)
 }
 
 
@@ -37,6 +35,9 @@ function findItemById(id) {
 function capitalizeNames() {
   // TODO:  Use the .map() and possibly .slice() methods and return a new items array with the item names capitalized
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
+  let mappedArray = items.map((item) => {
+    let capitalized = item.name[0].toUpperCase() + item.name.slice[1].toLowerCase()
+  })
 }
 
 /**
@@ -79,6 +80,7 @@ function filterItemsByCategoryId(categoryId) {
 
 function logCartItems() {
   // TODO: Loop through your cart and use the indexes to log the names of all items in your cart
+
 }
 
 /**
