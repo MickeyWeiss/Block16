@@ -13,11 +13,12 @@ const cart = [1, 3, 5];
 
 // ------------------ Complete the functions written below ------------------------------ //
 
-function logItemNames(name) {
-  items.forEach((name)=>
-  console.log(name))
+function logItemNames(item) {
 //TODO: use the .forEach() method to log out the name of each item
+items.forEach((item) => console.log(item.name))
 }
+
+
 
 /**
  * @param {number} id
@@ -25,7 +26,9 @@ function logItemNames(name) {
  */
 function findItemById(id) {
   // TODO: Use the .find() method to return the item who's id matches the passed in id
-  return items.find(element => element.id === id)
+  return items.find((item) => {
+    return item.id === id
+  })
 }
 
 
@@ -35,23 +38,18 @@ function findItemById(id) {
 function capitalizeNames() {
   // TODO:  Use the .map() and possibly .slice() methods and return a new items array with the item names capitalized
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
-  let mappedArray = items.map((item) => {
-    let capitalized = item.name[0].toUpperCase() + item.name.slice[1].toLowerCase()
-  })
-}
 
+  return items.map(item => item.name.slice(0,1).toUpperCase() + item.name.slice(1))
+
+}
 /**
  * @returns {number} the sum of all inventory items
  */
 
 function calculateTotalInventory(inventory) {
   // TODO Use the .reduce() method to return the total number of items in inventory
-const reduction = items.reduce((acc, item)=> {
-  acc = acc + item[inventory];
-  return inventory;
 
-})
-console.log(reduction)
+  return items.reduce((accumulator, current) => accumulator + (current.inventory), 0)
 }
 
 
@@ -60,6 +58,8 @@ console.log(reduction)
  */
 function calculateAllInventoryPrice() {
   // TODO Use the .reduce() method to return the total price of all the items in inventory
+
+  return items.reduce((accumulator, current) => accumulator + (current.price), 0)
 }
 
 /**
@@ -68,6 +68,8 @@ function calculateAllInventoryPrice() {
  */
 function getItemPriceByName(name) {
   // TODO: Use your knowledge of objects and arrays to get the price of the item passed in
+  let itemPrice = items.find((item) => item.name === name)
+  return itemPrice.price
 }
 
 /**
@@ -76,11 +78,15 @@ function getItemPriceByName(name) {
  */
 function filterItemsByCategoryId(categoryId) {
   // TODO: use the .filter() method to filter out all items which don't belong the passed in category
+  return items.filter(item => item.categoryId === 2)
 }
 
 function logCartItems() {
   // TODO: Loop through your cart and use the indexes to log the names of all items in your cart
 
+  cart.forEach((cartItemId) => {
+    console.log(items.find(element => element.id === cartItemId))
+  })
 }
 
 /**
@@ -88,7 +94,16 @@ function logCartItems() {
  */
 function calculateTotalCartPrice() {
   // TODO: Loop through your cart and return the total price of all items in your cart
+
+  let sum = 0;
+  cart.forEach((cartItemId) => {
+    let foundItem = items.find(item => item.id == cartItemId)
+    sum += foundItem.price;
+  })
+  return sum;
+
 }
+
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
 
